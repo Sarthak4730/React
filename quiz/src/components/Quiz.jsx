@@ -3,6 +3,18 @@ import { Link } from "react-router-dom"
 import Question from "./Question"
 
 export default function Quiz(){
+
+    const[data,setData] = React.useState()
+    React.useEffect(() => {
+        (async () => {
+            const response = await fetch("https://opentdb.com/api.php?amount=5&type=multiple");
+            // Check status codes and whatnot here and handle accordingly
+            const data = await response.json();
+            console.log(data);
+            setData(data);
+        })();
+    }, [])
+
     return (
         <div className="box">
             <Question q="How would one say goodbye in Spanish?" opts={["Adiós", "Hola", "Au Revoir", "Salir"]} />
