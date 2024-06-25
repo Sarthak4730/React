@@ -62,7 +62,7 @@ a:hover{
 }
 
 .q-box{
-  width: 400px;
+  width: 500px;
   height: 85px;
   text-align: center;
   display: flex;
@@ -82,9 +82,9 @@ a:hover{
   margin-bottom: 15px;
 }
 .answer-option{
-  max-width: 100px;
+  max-width: 200px;
   padding: 0 10px;
-  height: 21px;
+  height: 25px;
   border-radius: 8px;
   border: 1px solid #4D5B9E;
   color: #293264;
@@ -101,7 +101,7 @@ a:hover{
   border: none;
 }
 hr{
-  width: 400px;
+  width: 500px;
   background-color: #DBDEF0;
   margin-bottom: 15px;
 }
