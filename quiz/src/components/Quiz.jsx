@@ -5,15 +5,23 @@ import Question from "./Question"
 export default function Quiz(){
 
     const[data,setData] = React.useState()
+    
     React.useEffect(() => {
         (async () => {
             const response = await fetch('https://the-trivia-api.com/v2/questions');
             // Check status codes and whatnot here and handle accordingly
+            console.log("Status: "+response.status)
+            console.log("Ok: "+response.ok)
             const data = await response.json();
             console.log(data);
             setData(data);
         })();
     }, [])
+
+    // let questions = []
+    // for(let i=0; i<5; i++)
+    //     questions.push(data[i].question.text)
+    // console.log(questions)
 
     return (
         <div className="box">
