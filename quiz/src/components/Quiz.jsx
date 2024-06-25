@@ -7,7 +7,7 @@ export default function Quiz(){
     const[data,setData] = React.useState()
     React.useEffect(() => {
         (async () => {
-            const response = await fetch("https://opentdb.com/api.php?amount=5&type=multiple");
+            const response = await fetch('https://the-trivia-api.com/v2/questions');
             // Check status codes and whatnot here and handle accordingly
             const data = await response.json();
             console.log(data);
