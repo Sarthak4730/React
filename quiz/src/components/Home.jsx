@@ -4,7 +4,8 @@ import { Link } from "react-router-dom"
 export default function Home(){
     return (
         <div className="box">
-            <h1>This is Home Page</h1>
+            <h1 className="eh-one">Quizzical</h1>
+            <h2 className="eh-two">Answer 5 Multiple Choice Questions.</h2>
             <Link to="/quiz">Start quiz</Link>
         </div>
     )
