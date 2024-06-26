@@ -3,21 +3,16 @@ import Choice from "./Choice"
 
 export default function Question(props){
 
-    let fourOptions = props.opts
+    const [newFourOptions, setNewFourOptions] = React.useState(false)
     React.useEffect(() => {
-        console.log("Before shuffle = "+fourOptions)
-        function shuffle(array){
-            for (let i = array.length; i > 0; i--) {
-              let j = Math.floor(Math.random() * i)
-              let temp = array[i]
-              array[i] = array[j]
-              array[j] = temp
-            }
+        console.log("Before shuffle = "+props.opts)
+        const shuffle = (array) => {
+            return array.sort(() => Math.random() - 0.5);
         }
 
-        shuffle(fourOptions)
-        console.log("After shuffle = "+fourOptions)
+        setNewFourOptions(shuffle(props.opts))
     }, [])
+    console.log("After shuffle = "+newFourOptions)
     
     function checkAns(e){
         console.log(`UserChoice = ${e.target.textContent}\nSolution = ${props.solution}`)
@@ -33,10 +28,10 @@ export default function Question(props){
             <div className="q-box">
                 <h3 className="eh-three">{props.q}</h3>
                 <div className="answer-options-box">
-                    <Choice ch={fourOptions[0]} onClick={(e) => checkAns(e)}/>
-                    <Choice ch={fourOptions[1]} onClick={(e) => checkAns(e)}/>
-                    <Choice ch={fourOptions[2]} onClick={(e) => checkAns(e)}/>
-                    <Choice ch={fourOptions[3]} onClick={(e) => checkAns(e)}/>
+                    <Choice ch={newFourOptions[0]} onClick={(e) => checkAns(e)}/>
+                    <Choice ch={newFourOptions[1]} onClick={(e) => checkAns(e)}/>
+                    <Choice ch={newFourOptions[2]} onClick={(e) => checkAns(e)}/>
+                    <Choice ch={newFourOptions[3]} onClick={(e) => checkAns(e)}/>
                 </div>
             </div>
             <hr />
