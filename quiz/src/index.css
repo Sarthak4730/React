@@ -22,6 +22,7 @@ body{
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  border-radius: 15px;
 }
 
 .box{
@@ -33,6 +34,7 @@ body{
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  border-radius: 15px;
 }
 
 .q-box-collection{
@@ -128,9 +130,10 @@ hr{
 
 .last{
   display: flex;
-  height: 30px;
+  width: 400px;
+  justify-content: space-evenly;
+  margin-bottom: 15px;
   align-items: center;
-  gap: 15px;
 }
 .last > a{
   margin-top: 0;
@@ -138,10 +141,7 @@ hr{
 .last > .eh-three{
   font-size: 20px;
   font-weight: 800;
-  background-color: #4D5B9E;
-  color: white;
-  padding: 7.5px;
-  margin-bottom: 15px;
+  color: black;
 }
 
 .correct{
