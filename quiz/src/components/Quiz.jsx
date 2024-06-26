@@ -12,6 +12,8 @@ export default function Quiz(){
     
     const [playAgain, setPlayAgain] = React.useState(false)
     
+    const [high, setHigh] = React.useState(false)
+
     React.useEffect(() => {
         (async () => {
             const response = await fetch('https://the-trivia-api.com/v2/questions')
@@ -19,6 +21,7 @@ export default function Quiz(){
             const data = await response.json()
             console.log(data)
             setData(data)
+            setHigh( localStorage.getItem("highScore") )
         })()
     }, [])
 
@@ -40,6 +43,7 @@ export default function Quiz(){
     React.useEffect(() => {
         if( numOfDone === 5 ){
             setPlayAgain(true)
+            localStorage.setItem("highScore", numOfCorrect)
         }
     }, [numOfDone])
 
@@ -55,7 +59,8 @@ export default function Quiz(){
                 </div>
             ) }
             <div className="last">
-                <h3 className="eh-three">{`Score = ${numOfCorrect}`}</h3>
+                <h3 className="eh-three">{`Current Score = ${numOfCorrect}`}</h3>
+                { high && <h3 className="eh-three">{`High Score = ${high}`}</h3> }
                 { playAgain && <Link to="/" className="play-again-btn">Play again</Link> }
             </div>
         </div>

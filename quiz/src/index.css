@@ -130,10 +130,11 @@ hr{
 
 .last{
   display: flex;
-  width: 400px;
+  width: 800px;
   justify-content: space-evenly;
   margin-bottom: 15px;
   align-items: center;
+  background-color: aqua;
 }
 .last > a{
   margin-top: 0;
