@@ -36,23 +36,28 @@ export default function Quiz(){
         console.log(numOfCorrect)
     }, [numOfCorrect])
     
+    const [check, setCheck] = React.useState(false)
+    function clickedOnCheck(){
+        setCheck(true)
+    }
+
     return (
         <div className="box">
             {questions.length > 0 && (
                 <>
-                    <Question qnum="1" q={questions[0]} opts={correctIncorrectsCollection[0]} correctCount={setNumOfCorrect}/>
-                    <Question qnum="2" q={questions[1]} opts={correctIncorrectsCollection[1]} correctCount={setNumOfCorrect}/>
-                    <Question qnum="3" q={questions[2]} opts={correctIncorrectsCollection[2]} correctCount={setNumOfCorrect}/>
-                    <Question qnum="4" q={questions[3]} opts={correctIncorrectsCollection[3]} correctCount={setNumOfCorrect}/>
-                    <Question qnum="5" q={questions[4]} opts={correctIncorrectsCollection[4]} correctCount={setNumOfCorrect}/>
+                    <Question q={questions[0]} opts={correctIncorrectsCollection[0]} correctCount={setNumOfCorrect}/>
+                    <Question q={questions[1]} opts={correctIncorrectsCollection[1]} correctCount={setNumOfCorrect}/>
+                    <Question q={questions[2]} opts={correctIncorrectsCollection[2]} correctCount={setNumOfCorrect}/>
+                    <Question q={questions[3]} opts={correctIncorrectsCollection[3]} correctCount={setNumOfCorrect}/>
+                    <Question q={questions[4]} opts={correctIncorrectsCollection[4]} correctCount={setNumOfCorrect}/>
                 </>
             ) }
-            <button className="check-answers-btn">Check answers</button>
+            {check 
+                ?   <div className="last">
+                        <h3 className="eh-three">You scored 3/5 correct answers</h3>
+                        <Link to="/">Play again</Link>
+                    </div>
+                : <button className="check-answers-btn" onClick={clickedOnCheck}>Check answers</button>}
         </div>
     )
 }
-
-{/* <div className="last">
-    <h3 className="eh-three">You scored 3/5 correct answers</h3>
-    <Link to="/">Play again</Link>
-</div> */}
