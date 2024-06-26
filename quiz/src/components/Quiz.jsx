@@ -29,18 +29,22 @@ export default function Quiz(){
             
             correctIncorrectsCollection.push(oneCorrectThreeIncorrects)
         }
-        console.log(correctIncorrectsCollection)
     }
 
+    const [numOfCorrect, setNumOfCorrect] = React.useState(0)
+    React.useEffect(() => {
+        console.log(numOfCorrect)
+    }, [numOfCorrect])
+    
     return (
         <div className="box">
             {questions.length > 0 && (
                 <>
-                    <Question q={questions[0]} opts={correctIncorrectsCollection[0]} />
-                    <Question q={questions[1]} opts={correctIncorrectsCollection[1]} />
-                    <Question q={questions[2]} opts={correctIncorrectsCollection[2]} />
-                    <Question q={questions[3]} opts={correctIncorrectsCollection[3]} />
-                    <Question q={questions[4]} opts={correctIncorrectsCollection[4]} />
+                    <Question qnum="1" q={questions[0]} opts={correctIncorrectsCollection[0]} correctCount={setNumOfCorrect}/>
+                    <Question qnum="2" q={questions[1]} opts={correctIncorrectsCollection[1]} correctCount={setNumOfCorrect}/>
+                    <Question qnum="3" q={questions[2]} opts={correctIncorrectsCollection[2]} correctCount={setNumOfCorrect}/>
+                    <Question qnum="4" q={questions[3]} opts={correctIncorrectsCollection[3]} correctCount={setNumOfCorrect}/>
+                    <Question qnum="5" q={questions[4]} opts={correctIncorrectsCollection[4]} correctCount={setNumOfCorrect}/>
                 </>
             ) }
             <Link to="/analysis">Check answers</Link>
