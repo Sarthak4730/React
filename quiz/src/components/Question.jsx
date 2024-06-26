@@ -4,23 +4,36 @@ import Choice from "./Choice"
 export default function Question(props){
 
     const [newFourOptions, setNewFourOptions] = React.useState(false)
+    const [lock, setLock] = React.useState(false)
+
     React.useEffect(() => {
-        console.log("Before shuffle = "+props.opts)
+        // console.log("Before shuffle = "+props.opts)
         const shuffle = (array) => {
             return array.sort(() => Math.random() - 0.5);
         }
 
         setNewFourOptions(shuffle(props.opts))
     }, [])
-    console.log("After shuffle = "+newFourOptions)
+
+    // console.log("After shuffle = "+newFourOptions)
     
     function checkAns(e){
-        console.log(`UserChoice = ${e.target.textContent}\nSolution = ${props.solution}`)
-        if(e.target.textContent === props.solution){
-            e.target.classList.add("correct")
-            props.correctCount(prevCount => prevCount+1)
-        }else
-            e.target.classList.add("incorrect")
+        if( lock === false ){
+            if(e.target.textContent === props.solution){
+                e.target.classList.add("correct")
+                props.correctCount(prevCount => prevCount+1)
+                setLock(true)
+            }else{
+                e.target.classList.add("incorrect")
+                setLock(true)
+                console.log("you are wrong, the correct answer is "+props.solution)
+                let siblings = e.target.parentNode.childNodes
+                for(let i=0; i<siblings.length; i++){
+                    if(siblings[i].textContent === props.solution)
+                        siblings[i].classList.add("correct")
+                }
+            }
+        }
     }
 
     return (
