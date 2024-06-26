@@ -1,19 +1,36 @@
 import React from "react"
 import Choice from "./Choice"
-import {nanoid} from "nanoid"
 
 export default function Question(props){
 
-    let arr = []
-    for(let i=0; i<4; i++)
-        arr.push(nanoid())
+    function shuffle(arr) {
+        let currentIndex = arr.length
 
-    let correctId = arr[0]
-    function checkAns(id){
-        if(id === correctId){
-            console.log("Correct Choice")
-            props.correctCount(prevCount => prevCount+1)
+        while (currentIndex != 0) {
+            let randomIndex = Math.floor(Math.random() * currentIndex)
+            currentIndex--
+            [arr[currentIndex], arr[randomIndex]] = [arr[randomIndex], arr[currentIndex]]
         }
+
+        return arr
+    }
+    let fourOptions = []
+    React.useEffect(() => {
+        fourOptions = props.opts
+        console.log("props fourOptions = "+fourOptions)
+        let shuffledOptions = shuffle(fourOptions)
+        fourOptions = shuffledOptions
+        console.log("shuffled fourOptions = "+fourOptions)
+    }, [])
+    
+    function checkAns(e, userChoice){
+        console.log("UserChoice = "+userChoice)
+        console.log(e.target)
+        if(userChoice === props.solution){
+            e.target.classList.add("correct")
+            props.correctCount(prevCount => prevCount+1)
+        }else
+            e.target.classList.add("incorrect")
     }
 
     return (
@@ -21,10 +38,10 @@ export default function Question(props){
             <div className="q-box">
                 <h3 className="eh-three">{props.q}</h3>
                 <div className="answer-options-box">
-                    <Choice id={arr[0]} ch={props.opts[0]} onClick={() => checkAns(arr[0])}/>
-                    <Choice id={arr[1]} ch={props.opts[1]} onClick={() => checkAns(arr[1])}/>
-                    <Choice id={arr[2]} ch={props.opts[2]} onClick={() => checkAns(arr[2])}/>
-                    <Choice id={arr[3]} ch={props.opts[3]} onClick={() => checkAns(arr[3])}/>
+                    <Choice ch={fourOptions[0]} onClick={(e) => checkAns(e, fourOptions[0])}/>
+                    <Choice ch={fourOptions[1]} onClick={(e) => checkAns(e, fourOptions[1])}/>
+                    <Choice ch={fourOptions[2]} onClick={(e) => checkAns(e, fourOptions[2])}/>
+                    <Choice ch={fourOptions[3]} onClick={(e) => checkAns(e, fourOptions[3])}/>
                 </div>
             </div>
             <hr />
