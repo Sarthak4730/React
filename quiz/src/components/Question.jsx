@@ -26,7 +26,6 @@ export default function Question(props){
             }else{
                 e.target.classList.add("incorrect")
                 setLock(true)
-                console.log("you are wrong, the correct answer is "+props.solution)
                 let siblings = e.target.parentNode.childNodes
                 for(let i=0; i<siblings.length; i++){
                     if(siblings[i].textContent === props.solution)
@@ -34,6 +33,7 @@ export default function Question(props){
                 }
             }
         }
+        props.setNumOfDone(prevCount => prevCount + 1)
     }
 
     return (
