@@ -47,7 +47,12 @@ export default function Quiz(){
                     <Question qnum="5" q={questions[4]} opts={correctIncorrectsCollection[4]} correctCount={setNumOfCorrect}/>
                 </>
             ) }
-            <Link to="/analysis">Check answers</Link>
+            <button className="check-answers-btn">Check answers</button>
         </div>
     )
 }
+
+{/* <div className="last">
+    <h3 className="eh-three">You scored 3/5 correct answers</h3>
+    <Link to="/">Play again</Link>
+</div> */}

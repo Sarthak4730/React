@@ -38,7 +38,7 @@ body{
   margin-top: 7px;
 }
 
-a{
+a, .check-answers-btn{
   text-decoration: none;
   font-family: 'Inter';
   font-weight: 500;
@@ -54,7 +54,7 @@ a{
   align-items: center;
   margin-top: 29px;
 }
-a:hover{
+a:hover, .check-answers-btn:hover{
   cursor: pointer;
   background-color: #F5F7FB;
   color: #4D5B9E;
@@ -114,4 +114,14 @@ hr{
 }
 .last > a{
   margin-top: 0;
+}
+
+.correct{
+  color: #293264;
+  background-color: #94D7A2;
+}
+
+.incorrect{
+  color: #293264;
+  background-color: #F8BCBC;
 }
