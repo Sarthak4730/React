@@ -39,7 +39,7 @@ export default function Question(props){
     return (
         <>
             <div className="q-box">
-                <h3 className="eh-three">{props.q}</h3>
+                <h3 className="eh-three props-q">{props.q}</h3>
                 <div className="answer-options-box">
                     <Choice ch={newFourOptions[0]} onClick={(e) => checkAns(e)}/>
                     <Choice ch={newFourOptions[1]} onClick={(e) => checkAns(e)}/>

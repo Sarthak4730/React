@@ -59,9 +59,13 @@ export default function Quiz(){
                 </div>
             ) }
             <div className="last">
-                <h3 className="eh-three">{`Current Score = ${numOfCorrect}`}</h3>
-                { high && <h3 className="eh-three">{`High Score = ${high}`}</h3> }
-                { playAgain && <Link to="/" className="play-again-btn">Play again</Link> }
+                <div className="last-left">
+                    <h3 className="eh-three">{`Current Score = ${numOfCorrect}`}</h3>
+                    { high && <h3 className="eh-three">{`High Score = ${high}`}</h3> }
+                </div>
+                <div className="last-right">
+                    { playAgain && <Link to="/" className="play-again-btn">Play again</Link> }
+                </div>
             </div>
         </div>
     )
