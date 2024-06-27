@@ -43,7 +43,9 @@ export default function Quiz(){
     React.useEffect(() => {
         if( numOfDone === 5 ){
             setPlayAgain(true)
-            localStorage.setItem("highScore", numOfCorrect)
+            let prevHigh = localStorage.getItem("highScore")
+            if( prevHigh < numOfCorrect )
+                localStorage.setItem("highScore", numOfCorrect)
         }
     }, [numOfDone])
 
@@ -63,9 +65,7 @@ export default function Quiz(){
                     <h3 className="eh-three">{`Current Score = ${numOfCorrect}`}</h3>
                     { high && <h3 className="eh-three">{`High Score = ${high}`}</h3> }
                 </div>
-                <div className="last-right">
-                    { playAgain && <Link to="/" className="play-again-btn">Play again</Link> }
-                </div>
+                { playAgain && <div className="last-right"> <Link to="/" className="play-again-btn">Play again</Link> </div>}
             </div>
         </div>
     )
