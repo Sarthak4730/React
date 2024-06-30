@@ -28,7 +28,7 @@ body{
 
 .two-inputs{
   display: flex;
-  width: 250px;
+  width: 400px;
   justify-content: space-evenly;
 }
 
