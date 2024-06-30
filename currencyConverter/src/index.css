@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Teachers:ital,wght@0,400..800;1,400..800&display=swap');
+
+*{
+  padding: 0;
+  margin: 0;
+  font-family: Teachers;
+}
+
+body{
+  background-color: blueviolet;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  align-items: center;
+}
+
+.main-box{
+  background-color: white;
+  width: 500px;
+  height: 500px;
+  border: 1px solid black;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.two-inputs{
+  display: flex;
+  width: 250px;
+  justify-content: space-evenly;
+}
+
+input{
+  padding-left: 10px;
+  width: 150px;
+  height: 30px;
+  border: 3px solid blueviolet;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 17px;
+}
+select{
+  height: 35px;
+  border-radius: 10px;
+}
+
+i{
+  rotate: 90deg;
+  transform: scale(2,2);
+}
