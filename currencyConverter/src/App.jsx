@@ -8,32 +8,56 @@ export default function App() {
   const [fromAmount, setFromAmount] = useState(1)
   const [toAmount, setToAmount] = useState(1)
 
-  useEffect(() => {
-    const apiUrl = `https://api.api-ninjas.com/v1/convertcurrency?have=${fromCurr}&want=${toCurr}&amount=${fromAmount}`
+  const [downToUp, setDownToUp] = useState(false)
 
-    fetch(apiUrl, {
-      method: "GET",
-      headers: {
-        "X-Api-Key": "GKlXWhLputDyeIZ4v3cwwA==4oSTBWFCkR7eJzwR"
-      }
-    }).then(res => res.json())
-      .then(data => {
-        console.log(data)
-        setToAmount(data.new_amount)
-      })
-  }, [fromCurr, fromAmount])
+  useEffect(() => {
+
+    if(downToUp){
+      const apiUrl = `https://api.api-ninjas.com/v1/convertcurrency?have=${toCurr}&want=${fromCurr}&amount=${toAmount}`
+
+      fetch(apiUrl, {
+        method: "GET",
+        headers: {
+          "X-Api-Key": "GKlXWhLputDyeIZ4v3cwwA==4oSTBWFCkR7eJzwR"
+        }
+      }).then(res => res.json())
+        .then(data => {
+          console.log(data)
+          setFromAmount(data.new_amount)
+        })
+
+    }else{
+      const apiUrl = `https://api.api-ninjas.com/v1/convertcurrency?have=${fromCurr}&want=${toCurr}&amount=${fromAmount}`
+
+      fetch(apiUrl, {
+        method: "GET",
+        headers: {
+          "X-Api-Key": "GKlXWhLputDyeIZ4v3cwwA==4oSTBWFCkR7eJzwR"
+        }
+      }).then(res => res.json())
+        .then(data => {
+          console.log(data)
+          setToAmount(data.new_amount)
+        })
+
+    }
+  }, [fromCurr, fromAmount, toCurr, toAmount])
 
   function handleFromChange(e) {
+    setDownToUp(false)
     setFromCurr(e.target.value)
   }
   function handleToChange(e) {
+    setDownToUp(true)
     setToCurr(e.target.value)
   }
 
   function handleFromAmtChange(e) {
+    setDownToUp(false)
     setFromAmount(e.target.value)
   }
   function handleToAmtChange(e) {
+    setDownToUp(true)
     setToAmount(e.target.value)
   }
 
@@ -43,8 +67,7 @@ export default function App() {
 
       <TwoInputBoxes curr={fromCurr} handleChange={handleFromChange} amount={fromAmount} handleAmtChange={handleFromAmtChange} />
 
-      {/* <i className="fa-solid fa-arrow-right-arrow-left"></i> */}
-      <i className="fa-solid fa-arrow-down"></i>
+      <i className="fa-solid fa-arrow-right-arrow-left"></i>
 
       <TwoInputBoxes curr={toCurr} handleChange={handleToChange} amount={toAmount} handleAmtChange={handleToAmtChange} />
     </div>

@@ -48,6 +48,6 @@ select{
 }
 
 i{
-  /* rotate: 90deg; */
+  rotate: 90deg;
   transform: scale(2,2);
 }
