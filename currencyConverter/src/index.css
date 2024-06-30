@@ -44,6 +44,7 @@ input{
 select{
   height: 35px;
   border-radius: 10px;
+  padding-left: 10px;
 }
 
 i{

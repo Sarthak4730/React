@@ -1,4 +1,4 @@
-export default function TwoInputBoxes(){
+export default function TwoInputBoxes( {curr, onCurrChange, amount} ){
     const currOptions = {
                             "CNY": "Chinese Yuan",
                             "CHF": "Swiss Franc",
@@ -12,12 +12,14 @@ export default function TwoInputBoxes(){
                             "HKD": "Hong Kong Dollar"
                         }
     const currOptionsEntries = Object.entries(currOptions)
+
     return (
         <div className="two-inputs">
-            <input type="number" placeholder="1"/>
-            <select>
+            <input type="number" placeholder={amount}/>
+
+            <select value={curr} onChange={onCurrChange} >
                 {currOptionsEntries.map( c => {
-                    return <option value={c[0]}> {c[1]} </option>
+                    return <option key={c[0]} value={c[0]} > {c[1]} </option>
                 })}
             </select>
         </div>
